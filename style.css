@@ -161,12 +161,10 @@ input { -webkit-user-select: text; user-select: text; }
   border-radius: 24px;
   cursor: pointer;
 }
-.reveal-word {
-  font-size: clamp(2rem, 11vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1.1;
+.reveal-emoji {
+  font-size: min(42vmin, 16rem);
+  line-height: 1;
   text-align: center;
-  overflow-wrap: anywhere;
 }
 .reveal-hint { color: var(--muted); font-size: 0.9rem; }
 .reveal.pulse { animation: pulse var(--pulse) ease-out; }
@@ -205,8 +203,7 @@ input { -webkit-user-select: text; user-select: text; }
     grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
     align-content: start;
   }
-  .title { font-size: clamp(2.2rem, 10vh, 4rem); }
-  .title br { display: none; }
+  .title { font-size: clamp(2.2rem, 10vh, 4rem); margin-bottom: 8px; }
 }
 
 /* ---------- Summary ---------- */

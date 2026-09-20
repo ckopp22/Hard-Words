@@ -161,7 +161,7 @@
     CATEGORIES.forEach(function (c) {
       if (state.selected.indexOf(c.id) === -1) return;
       c.items.forEach(function (item) {
-        var key = item.toLowerCase();
+        var key = item.name.toLowerCase();
         if (!seen[key]) { seen[key] = true; out.push(item); }
       });
     });
@@ -180,8 +180,9 @@
 
   function nextItem() {
     if (state.queue.length === 0) buildQueue();
-    state.current = state.queue.pop() || "";
-    $("reveal-word").textContent = state.current;
+    state.current = state.queue.pop() || { emoji: "", name: "" };
+    $("reveal-emoji").textContent = state.current.emoji;
+    $("reveal-word").textContent = state.current.name; // screen readers only
   }
 
   // ---------- Play ----------

@@ -1,6 +1,6 @@
-# Words Are Hard (Web)
+# Hard Words (Web)
 
-A fast, silly party game for a group in one room. One phone is held up or passed around: tap the word to reveal the next one, describe or act it out without saying the obvious clues, and tap the player who guessed it to give them a point.
+A fast, silly party game for a group in one room. One phone is held up or passed around: tap the picture to reveal the next one, describe or act it out without saying the obvious clues, and tap the player who guessed it to give them a point.
 
 Plain HTML/CSS/JS — no framework, no build step, no backend. Installable as a PWA and playable offline once visited.
 
@@ -18,7 +18,7 @@ python3 -m http.server 8000
 Edit only `data/categories.js`:
 
 ```js
-{ id: "food", name: "Food", icon: "🍕", items: ["Pizza", "Taco"] }
+{ id: "food", name: "Food", icon: "🍕", items: [{ emoji: "🍕", name: "Pizza" }, { emoji: "🌮", name: "Taco" }] }
 ```
 
 Then bump `CACHE_VERSION` in `service-worker.js` (e.g. `"v2"`) so already-installed copies refresh.
@@ -38,5 +38,5 @@ All paths are relative, so it works from a sub-path like `/<repo>/` with no chan
 | `index.html` | Screens/markup, service worker registration |
 | `style.css` | Styling, portrait + landscape layouts |
 | `script.js` | Game logic and screen state machine |
-| `data/categories.js` | Categories and word lists |
+| `data/categories.js` | Categories and pictures (emoji) |
 | `manifest.json`, `service-worker.js`, `icons/` | PWA install + offline |

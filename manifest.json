@@ -1,7 +1,7 @@
 {
-  "name": "Words Are Hard",
-  "short_name": "Words Are Hard",
-  "description": "A fast, silly party game. Describe the word without saying the obvious things.",
+  "name": "Hard Words",
+  "short_name": "Hard Words",
+  "description": "A fast, silly party game. Describe the picture without saying the obvious things.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

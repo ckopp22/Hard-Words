@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Words Are Hard</title>
-  <meta name="description" content="A fast, silly party game. Describe the word without saying the obvious things.">
+  <title>Hard Words</title>
+  <meta name="description" content="A fast, silly party game. Describe the picture without saying the obvious things.">
   <meta name="theme-color" content="#2b2d42">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Words Are Hard">
+  <meta name="apple-mobile-web-app-title" content="Hard Words">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -20,7 +20,7 @@
     <!-- A. Main Menu -->
     <section id="screen-menu" class="screen" hidden>
       <div class="menu-hero">
-        <h1 class="title">Words<br>Are<br>Hard</h1>
+        <h1 class="title">Hard<br>Words</h1>
         <p class="tagline">Describe it. Act it out. Don't say the obvious.</p>
       </div>
       <div class="stack">
@@ -70,9 +70,10 @@
         <button id="btn-end" class="btn btn-ghost btn-small" type="button">End Round</button>
       </header>
       <div class="play-body">
-        <button id="reveal" class="reveal" type="button" aria-label="Next word">
-          <span id="reveal-word" class="reveal-word" aria-live="polite"></span>
-          <span class="reveal-hint">Tap for next word</span>
+        <button id="reveal" class="reveal" type="button" aria-label="Next picture">
+          <span id="reveal-emoji" class="reveal-emoji" aria-hidden="true"></span>
+          <span id="reveal-word" class="sr-only" aria-live="polite"></span>
+          <span class="reveal-hint">Tap for next picture</span>
         </button>
         <div id="score-bar" class="score-bar" role="group" aria-label="Tap the player who got it"></div>
       </div>
@@ -98,10 +99,10 @@
       <h2 id="howto-title">How to Play</h2>
       <ol>
         <li>Add everyone playing, then pick your categories.</li>
-        <li>Hold the screen so the describer can see the word (and nobody else).</li>
-        <li>Describe or act out the word without saying the obvious clues.</li>
-        <li>When someone guesses it, tap their name &mdash; they get a point and a new word appears.</li>
-        <li>Stuck? Tap the word to skip to the next one.</li>
+        <li>Hold the screen so the describer can see the picture (and nobody else).</li>
+        <li>Describe or act out the object without saying the obvious clues.</li>
+        <li>When someone guesses it, tap their name &mdash; they get a point and a new picture appears.</li>
+        <li>Stuck? Tap the picture to skip to the next one.</li>
         <li>Tap <strong>End Round</strong> when you're done to see who won.</li>
       </ol>
       <button id="btn-howto-close" class="btn btn-primary btn-big" type="button">Got it</button>
