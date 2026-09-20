@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Words Are Hard</title>
+  <meta name="description" content="A fast, silly party game. Describe the word without saying the obvious things.">
+  <meta name="theme-color" content="#2b2d42">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Words Are Hard">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- A. Main Menu -->
+    <section id="screen-menu" class="screen" hidden>
+      <div class="menu-hero">
+        <h1 class="title">Words<br>Are<br>Hard</h1>
+        <p class="tagline">Describe it. Act it out. Don't say the obvious.</p>
+      </div>
+      <div class="stack">
+        <button id="btn-play" class="btn btn-primary btn-big" type="button">Play</button>
+        <button id="btn-howto" class="btn btn-ghost" type="button">How to Play</button>
+        <p id="install-hint" class="hint" hidden>
+          <button id="btn-install" class="btn btn-ghost btn-small" type="button">Install app</button>
+        </p>
+      </div>
+    </section>
+
+    <!-- B. Player Setup -->
+    <section id="screen-setup" class="screen" hidden>
+      <header class="screen-header">
+        <button class="btn btn-ghost btn-small" type="button" data-goto="menu">&larr; Back</button>
+        <h2>Who's playing?</h2>
+      </header>
+      <form id="player-form" class="player-form" autocomplete="off">
+        <label class="sr-only" for="player-name">Player name</label>
+        <input id="player-name" type="text" maxlength="20" placeholder="Player name" enterkeyhint="done">
+        <button class="btn btn-primary" type="submit">Add Player</button>
+      </form>
+      <p id="player-error" class="error" role="alert" hidden></p>
+      <ul id="player-list" class="player-list"></ul>
+      <p id="player-hint" class="hint">Add at least 2 players.</p>
+      <div class="footer-bar">
+        <button id="btn-setup-continue" class="btn btn-primary btn-big" type="button" disabled>Continue</button>
+      </div>
+    </section>
+
+    <!-- C. Category Select -->
+    <section id="screen-categories" class="screen" hidden>
+      <header class="screen-header">
+        <button class="btn btn-ghost btn-small" type="button" data-goto="setup">&larr; Back</button>
+        <h2>Pick categories</h2>
+      </header>
+      <div id="category-grid" class="category-grid"></div>
+      <div class="footer-bar">
+        <button id="btn-start" class="btn btn-primary btn-big" type="button" disabled>Start Round</button>
+      </div>
+    </section>
+
+    <!-- D. Play Screen -->
+    <section id="screen-play" class="screen" hidden>
+      <header class="play-topbar">
+        <span id="play-category" class="play-category"></span>
+        <button id="btn-end" class="btn btn-ghost btn-small" type="button">End Round</button>
+      </header>
+      <div class="play-body">
+        <button id="reveal" class="reveal" type="button" aria-label="Next word">
+          <span id="reveal-word" class="reveal-word" aria-live="polite"></span>
+          <span class="reveal-hint">Tap for next word</span>
+        </button>
+        <div id="score-bar" class="score-bar" role="group" aria-label="Tap the player who got it"></div>
+      </div>
+    </section>
+
+    <!-- E. Round Summary -->
+    <section id="screen-summary" class="screen" hidden>
+      <header class="screen-header">
+        <h2>Round over!</h2>
+      </header>
+      <ol id="summary-list" class="summary-list"></ol>
+      <div class="footer-bar footer-row">
+        <button id="btn-again" class="btn btn-primary btn-big" type="button">Play Again</button>
+        <button id="btn-menu" class="btn btn-ghost btn-big" type="button">Back to Menu</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- How to Play modal -->
+  <div id="howto" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="howto-title">
+    <div class="modal-card">
+      <h2 id="howto-title">How to Play</h2>
+      <ol>
+        <li>Add everyone playing, then pick your categories.</li>
+        <li>Hold the screen so the describer can see the word (and nobody else).</li>
+        <li>Describe or act out the word without saying the obvious clues.</li>
+        <li>When someone guesses it, tap their name &mdash; they get a point and a new word appears.</li>
+        <li>Stuck? Tap the word to skip to the next one.</li>
+        <li>Tap <strong>End Round</strong> when you're done to see who won.</li>
+      </ol>
+      <button id="btn-howto-close" class="btn btn-primary btn-big" type="button">Got it</button>
+    </div>
+  </div>
+
+  <script src="data/categories.js"></script>
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol !== "file:") {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("service-worker.js").catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>
