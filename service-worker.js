@@ -1,6 +1,6 @@
 // Bump CACHE_VERSION whenever any app file (including data/categories.js) changes,
 // so installed copies pick up the update.
-var CACHE_VERSION = "v2";
+var CACHE_VERSION = "v3";
 var CACHE_NAME = "words-are-hard-" + CACHE_VERSION;
 var APP_SHELL = [
   "./",
@@ -16,7 +16,11 @@ var APP_SHELL = [
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(function (cache) { return cache.addAll(APP_SHELL); })
+      // cache: "reload" skips the browser's HTTP cache so a new version never
+      // stores stale copies of the files (GitHub Pages caches for ~10 minutes).
+      .then(function (cache) {
+        return cache.addAll(APP_SHELL.map(function (u) { return new Request(u, { cache: "reload" }); }));
+      })
       .then(function () { return self.skipWaiting(); })
   );
 });
