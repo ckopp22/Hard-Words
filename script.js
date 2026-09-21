@@ -15,8 +15,14 @@
     selected: [],   // selected category ids
     queue: [],
     current: null,
-    nextId: 1
+    nextId: 1,
+    timerOn: false,
+    timerSecs: 60
   };
+
+  var TIMER_CHOICES = [30, 60, 90];
+  var timerId = null;
+  var deadline = 0;
 
   var deferredInstall = null;
 
@@ -33,7 +39,9 @@
     try {
       localStorage.setItem(STORE_KEY, JSON.stringify({
         names: state.players.map(function (p) { return p.name; }),
-        categories: state.selected
+        categories: state.selected,
+        timerOn: state.timerOn,
+        timerSecs: state.timerSecs
       }));
     } catch (e) { /* storage unavailable: ignore */ }
   }
@@ -224,7 +232,43 @@
     });
   }
 
+  // ---------- Timer ----------
+  function formatTime(secs) {
+    var m = Math.floor(secs / 60), s = secs % 60;
+    return m + ":" + (s < 10 ? "0" : "") + s;
+  }
+
+  function stopTimer() {
+    if (timerId !== null) { clearInterval(timerId); timerId = null; }
+  }
+
+  function tickTimer() {
+    var left = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+    var el = $("timer-display");
+    el.textContent = formatTime(left);
+    el.classList.toggle("low", left <= 10);
+    if (left === 0) renderSummary(true);
+  }
+
+  function startTimer() {
+    stopTimer();
+    deadline = Date.now() + state.timerSecs * 1000;
+    $("timer-display").hidden = false;
+    tickTimer();
+    timerId = setInterval(tickTimer, 250); // wall-clock based, so it never drifts
+  }
+
+  function renderTimerSettings() {
+    var toggle = $("timer-toggle");
+    toggle.setAttribute("aria-checked", state.timerOn ? "true" : "false");
+    $("timer-options").hidden = !state.timerOn;
+    document.querySelectorAll(".seg-btn").forEach(function (b) {
+      b.setAttribute("aria-checked", Number(b.getAttribute("data-secs")) === state.timerSecs ? "true" : "false");
+    });
+  }
+
   function startRound() {
+    stopTimer();
     state.players.forEach(function (p) { p.score = 0; });
     state.current = null;
     buildQueue();
@@ -232,11 +276,14 @@
     renderScoreBar();
     nextItem();
     showScreen("play");
+    if (state.timerOn) startTimer(); else $("timer-display").hidden = true;
     save();
   }
 
   // ---------- Summary ----------
-  function renderSummary() {
+  function renderSummary(timeUp) {
+    stopTimer();
+    $("summary-title").textContent = timeUp === true ? "Time's up!" : "Round over!";
     var list = $("summary-list");
     list.textContent = "";
     var ranked = state.players.slice().sort(function (a, b) { return b.score - a.score; });
@@ -263,6 +310,7 @@
   }
 
   function backToMenu() {
+    stopTimer();
     state.players = [];
     state.queue = [];
     state.current = null;
@@ -283,6 +331,8 @@
       return CATEGORIES.some(function (c) { return c.id === id; });
     });
     state.selected = savedCats;
+    if (saved && saved.timerOn === true) state.timerOn = true;
+    if (saved && TIMER_CHOICES.indexOf(saved.timerSecs) !== -1) state.timerSecs = saved.timerSecs;
 
     $("btn-play").addEventListener("click", function () {
       if (state.players.length === 0) {
@@ -334,7 +384,21 @@
       nextItem();
     });
 
-    $("btn-end").addEventListener("click", renderSummary);
+    $("timer-toggle").addEventListener("click", function () {
+      state.timerOn = !state.timerOn;
+      renderTimerSettings();
+      save();
+    });
+    document.querySelectorAll(".seg-btn").forEach(function (b) {
+      b.addEventListener("click", function () {
+        state.timerSecs = Number(b.getAttribute("data-secs"));
+        renderTimerSettings();
+        save();
+      });
+    });
+    renderTimerSettings();
+
+    $("btn-end").addEventListener("click", function () { renderSummary(false); });
     $("btn-again").addEventListener("click", startRound);
     $("btn-menu").addEventListener("click", backToMenu);
 

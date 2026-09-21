@@ -58,6 +58,17 @@
         <h2>Pick categories</h2>
       </header>
       <div id="category-grid" class="category-grid"></div>
+      <div class="timer-setting">
+        <div class="switch-row">
+          <span id="timer-label" class="switch-label">Timer</span>
+          <button id="timer-toggle" class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="timer-label"></button>
+        </div>
+        <div id="timer-options" class="seg" role="radiogroup" aria-label="Timer length" hidden>
+          <button class="seg-btn" type="button" role="radio" aria-checked="false" data-secs="30">30s</button>
+          <button class="seg-btn" type="button" role="radio" aria-checked="false" data-secs="60">60s</button>
+          <button class="seg-btn" type="button" role="radio" aria-checked="false" data-secs="90">90s</button>
+        </div>
+      </div>
       <div class="footer-bar">
         <button id="btn-start" class="btn btn-primary btn-big" type="button" disabled>Start Round</button>
       </div>
@@ -67,6 +78,7 @@
     <section id="screen-play" class="screen" hidden>
       <header class="play-topbar">
         <span id="play-category" class="play-category"></span>
+        <span id="timer-display" class="timer-display" role="timer" hidden>0:00</span>
         <button id="btn-end" class="btn btn-ghost btn-small" type="button">End Round</button>
       </header>
       <div class="play-body">
@@ -82,7 +94,7 @@
     <!-- E. Round Summary -->
     <section id="screen-summary" class="screen" hidden>
       <header class="screen-header">
-        <h2>Round over!</h2>
+        <h2 id="summary-title">Round over!</h2>
       </header>
       <ol id="summary-list" class="summary-list"></ol>
       <div class="footer-bar footer-row">

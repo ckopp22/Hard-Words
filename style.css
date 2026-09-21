@@ -145,10 +145,44 @@ input { -webkit-user-select: text; user-select: text; }
 .cat-card.mixed { grid-column: 1 / -1; min-height: 72px; flex-direction: row; }
 .cat-card.mixed .cat-icon { font-size: 1.8rem; }
 
+/* ---------- Timer setting ---------- */
+.timer-setting { display: flex; flex-direction: column; gap: 12px; background: var(--bg-2); border-radius: var(--radius); padding: 12px 16px; }
+.switch-row { display: flex; align-items: center; justify-content: space-between; min-height: var(--tap); }
+.switch-label { font-weight: 700; font-size: 1.1rem; }
+.switch {
+  position: relative; flex: none;
+  width: 64px; height: 36px;
+  border: 0; border-radius: 18px;
+  background: var(--card); cursor: pointer;
+}
+.switch::after {
+  content: ""; position: absolute; top: 4px; left: 4px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--text);
+  transition: transform 150ms ease;
+}
+.switch[aria-checked="true"] { background: var(--accent); }
+.switch[aria-checked="true"]::after { transform: translateX(28px); background: var(--accent-text); }
+.switch:focus-visible, .seg-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.seg-btn {
+  font: inherit; font-weight: 700; color: var(--text);
+  min-height: var(--tap);
+  border: 2px solid transparent; border-radius: var(--radius);
+  background: var(--card); cursor: pointer;
+}
+.seg-btn[aria-checked="true"] { background: var(--accent); color: var(--accent-text); }
+
 /* ---------- Play ---------- */
 #screen-play { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
 .play-topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.play-category { font-weight: 700; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.play-category { flex: 1; min-width: 0; font-weight: 700; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.timer-display {
+  font-size: 1.6rem; font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  min-width: 3.2ch; text-align: center;
+}
+.timer-display.low { color: var(--danger); animation: pulse 1000ms ease-in-out infinite; }
 .play-body { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
 
 .reveal {
@@ -241,6 +275,6 @@ input { -webkit-user-select: text; user-select: text; }
 .modal-card li { margin-bottom: 8px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal.pulse, .chip.pulse { animation: none; }
+  .reveal.pulse, .chip.pulse, .timer-display.low { animation: none; }
   .btn:active { transform: none; }
 }
