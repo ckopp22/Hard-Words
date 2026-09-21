@@ -26,6 +26,7 @@
       <div class="stack">
         <button id="btn-play" class="btn btn-primary btn-big" type="button">Play</button>
         <button id="btn-howto" class="btn btn-ghost" type="button">How to Play</button>
+        <button class="btn btn-ghost mute-btn" type="button" aria-label="Mute sounds" aria-pressed="false"><span class="mute-icon" aria-hidden="true">🔊</span> <span class="mute-text">Sound on</span></button>
         <p id="install-hint" class="hint" hidden>
           <button id="btn-install" class="btn btn-ghost btn-small" type="button">Install app</button>
         </p>
@@ -79,7 +80,8 @@
       <header class="play-topbar">
         <span id="play-category" class="play-category"></span>
         <span id="timer-display" class="timer-display" role="timer" hidden>0:00</span>
-        <button id="btn-end" class="btn btn-ghost btn-small" type="button">End Round</button>
+        <button class="btn btn-ghost btn-small mute-btn" type="button" aria-label="Mute sounds" aria-pressed="false"><span class="mute-icon" aria-hidden="true">🔊</span></button>
+        <button id="btn-end"class="btn btn-ghost btn-small" type="button">End Round</button>
       </header>
       <div class="play-body">
         <button id="reveal" class="reveal" type="button" aria-label="Next picture">
