@@ -357,16 +357,73 @@ window.CATEGORIES = {
       icon: "🙏",
       items: [
         { emoji: "⛪", name: "Church" }, { emoji: "✝️", name: "Cross" },
-        { emoji: "☦️", name: "Orthodox Cross" }, { emoji: "🕌", name: "Mosque" },
-        { emoji: "🕍", name: "Synagogue" }, { emoji: "🛕", name: "Hindu Temple" },
-        { emoji: "⛩️", name: "Shinto Shrine" }, { emoji: "🕋", name: "Kaaba" },
-        { emoji: "✡️", name: "Star of David" }, { emoji: "☪️", name: "Star and Crescent" },
-        { emoji: "☸️", name: "Wheel of Dharma" }, { emoji: "🕉️", name: "Om" },
-        { emoji: "☯️", name: "Yin Yang" }, { emoji: "🛐", name: "Place of Worship" },
-        { emoji: "🙏", name: "Praying Hands" }, { emoji: "📿", name: "Prayer Beads" },
-        { emoji: "📖", name: "Holy Book" }, { emoji: "🕊️", name: "Dove" },
-        { emoji: "👼", name: "Angel" }, { emoji: "😇", name: "Halo" },
-        { emoji: "🧎", name: "Kneeling" }, { emoji: "🙇", name: "Bowing" }
+        { emoji: "📖", name: "Bible" }, { emoji: "🙏", name: "Praying Hands" },
+        { emoji: "🕊️", name: "Holy Spirit Dove" }, { emoji: "👼", name: "Angel" },
+        { emoji: "😇", name: "Halo" }, { emoji: "🧎", name: "Kneeling in Prayer" },
+        { emoji: "🍏", name: "Forbidden Fruit" }, { emoji: "🌳", name: "Garden of Eden" },
+        { emoji: "🛳️", name: "Noah's Ark" }, { emoji: "🌦️", name: "Rainbow Promise" },
+        { emoji: "🌿", name: "Burning Bush" }, { emoji: "🌀", name: "Parting of the Red Sea" },
+        { emoji: "📃", name: "Ten Commandments" }, { emoji: "🐆", name: "Daniel in the Lion's Den" },
+        { emoji: "🐋", name: "Jonah and the Whale" }, { emoji: "🪨", name: "David and Goliath" },
+        { emoji: "⭐", name: "Star of Bethlehem" }, { emoji: "🍼", name: "Baby Jesus" },
+        { emoji: "🐏", name: "Good Shepherd" }, { emoji: "🥯", name: "Feeding the 5,000" },
+        { emoji: "🍷", name: "Water into Wine" }, { emoji: "🥘", name: "Last Supper" },
+        { emoji: "🌵", name: "Crown of Thorns" }, { emoji: "🪦", name: "Empty Tomb" },
+        { emoji: "🐣", name: "Resurrection" }
+      ]
+    },
+    {
+      id: "world",
+      name: "World",
+      icon: "🌍",
+      items: [
+        { emoji: "🌎", name: "Americas Globe" }, { emoji: "🌏", name: "Asia and Australia Globe" },
+        { emoji: "🕌", name: "Mosque" }, { emoji: "🛕", name: "Hindu Temple" },
+        { emoji: "⛩️", name: "Japanese Torii Gate" }, { emoji: "🌐", name: "Internet Globe" },
+        { emoji: "🎌", name: "Crossed Flags" }, { emoji: "🇬🇧", name: "United Kingdom" },
+        { emoji: "🇫🇷", name: "France" }, { emoji: "🇯🇵", name: "Japan" },
+        { emoji: "🇧🇷", name: "Brazil" }, { emoji: "🇮🇳", name: "India" },
+        { emoji: "🇨🇦", name: "Canada" }, { emoji: "🇲🇽", name: "Mexico" },
+        { emoji: "🇦🇺", name: "Australia" }, { emoji: "🇨🇳", name: "China" },
+        { emoji: "🇩🇪", name: "Germany" }, { emoji: "🇮🇹", name: "Italy" },
+        { emoji: "🇪🇸", name: "Spain" }, { emoji: "🇪🇬", name: "Egypt" },
+        { emoji: "🇰🇷", name: "South Korea" }, { emoji: "🇿🇦", name: "South Africa" },
+        { emoji: "🕍", name: "Synagogue" }, { emoji: "🌄", name: "Sunrise Over Mountains" },
+        { emoji: "🧊", name: "Antarctica Ice" }
+      ]
+    },
+    {
+      id: "history",
+      name: "History",
+      icon: "🏛️",
+      items: [
+        { emoji: "🐎", name: "Trojan Horse" }, { emoji: "🔺", name: "Pyramids" },
+        { emoji: "🐫", name: "Silk Road" }, { emoji: "🪓", name: "Viking Axe" },
+        { emoji: "🌕", name: "Moon Landing" }, { emoji: "💣", name: "World War" },
+        { emoji: "🪖", name: "Soldier's Helmet" }, { emoji: "🧱", name: "Berlin Wall" },
+        { emoji: "🤠", name: "Wild West" }, { emoji: "⛏️", name: "Gold Rush" },
+        { emoji: "🪶", name: "Native American Feather" }, { emoji: "🕰️", name: "Ancient Clock" },
+        { emoji: "⚱️", name: "Egyptian Urn" }, { emoji: "🗡️", name: "Samurai Sword" },
+        { emoji: "📯", name: "Herald's Horn" }, { emoji: "🪙", name: "Ancient Coin" },
+        { emoji: "🗝️", name: "Old Key" }, { emoji: "🖋️", name: "Signing the Declaration" },
+        { emoji: "☎️", name: "Telephone" }, { emoji: "⚒️", name: "Blacksmith" }
+      ]
+    },
+    {
+      id: "numbers",
+      name: "Numbers",
+      icon: "🔢",
+      items: [
+        { emoji: "1", name: "Number 1" }, { emoji: "2", name: "Number 2" },
+        { emoji: "3", name: "Number 3" }, { emoji: "4", name: "Number 4" },
+        { emoji: "5", name: "Number 5" }, { emoji: "6", name: "Number 6" },
+        { emoji: "7", name: "Number 7" }, { emoji: "8", name: "Number 8" },
+        { emoji: "9", name: "Number 9" }, { emoji: "10", name: "Number 10" },
+        { emoji: "11", name: "Number 11" }, { emoji: "12", name: "Number 12" },
+        { emoji: "13", name: "Number 13" }, { emoji: "14", name: "Number 14" },
+        { emoji: "15", name: "Number 15" }, { emoji: "16", name: "Number 16" },
+        { emoji: "17", name: "Number 17" }, { emoji: "18", name: "Number 18" },
+        { emoji: "19", name: "Number 19" }, { emoji: "20", name: "Number 20" }
       ]
     }
   ]
