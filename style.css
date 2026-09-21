@@ -75,7 +75,14 @@ input { -webkit-user-select: text; user-select: text; }
 /* ---------- Shared bits ---------- */
 .screen-header { display: flex; align-items: center; gap: 12px; }
 .screen-header h2 { margin: 0; font-size: 1.5rem; }
-.footer-bar { margin-top: auto; padding-top: 8px; }
+/* Sticks to the bottom of the scroll area so Start/Continue stay reachable on long screens. */
+.footer-bar {
+  position: sticky; bottom: calc(-1 * max(16px, env(safe-area-inset-bottom)));
+  margin-top: auto;
+  margin-bottom: calc(-1 * max(16px, env(safe-area-inset-bottom)));
+  padding: 8px 0 max(16px, env(safe-area-inset-bottom));
+  background: var(--bg);
+}
 .footer-row { display: flex; flex-direction: column; gap: 12px; }
 .stack { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 420px; margin: 0 auto; }
 .hint { color: var(--muted); text-align: center; margin: 0; }
@@ -132,15 +139,15 @@ input { -webkit-user-select: text; user-select: text; }
 }
 .cat-card {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-  min-height: 120px;
-  padding: 12px;
+  min-height: 96px;
+  padding: 10px;
   font: inherit; font-weight: 700; color: var(--text);
   background: var(--bg-2);
   border: 3px solid transparent;
   border-radius: var(--radius);
   cursor: pointer;
 }
-.cat-card .cat-icon { font-size: 2.5rem; }
+.cat-card .cat-icon { font-size: 2.1rem; }
 .cat-card[aria-pressed="true"] { border-color: var(--accent); background: var(--card); }
 .cat-card.mixed { grid-column: 1 / -1; min-height: 72px; flex-direction: row; }
 .cat-card.mixed .cat-icon { font-size: 1.8rem; }

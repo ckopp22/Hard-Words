@@ -1,6 +1,6 @@
 // Bump CACHE_VERSION whenever any app file (including data/categories.js) changes,
 // so installed copies pick up the update.
-var CACHE_VERSION = "v5";
+var CACHE_VERSION = "v6";
 var CACHE_NAME = "words-are-hard-" + CACHE_VERSION;
 var APP_SHELL = [
   "./",
